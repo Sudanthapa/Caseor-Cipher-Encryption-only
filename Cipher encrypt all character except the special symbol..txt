@@ -1,0 +1,27 @@
+
+def caesar_encrypt(realText, step):
+	outText = []
+	cryptText = []
+	
+	alphabets = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+	
+  
+	special = ["!","#","$","%","&","(",")","*","+","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~","\t","\n","\r","\x0b","\x0c"]
+
+	for eachLetter in realText:
+		if eachLetter in alphabets:
+			index = alphabets.index(eachLetter)
+			crypting = (index +step)%52
+			cryptText.append(crypting)
+			newLetter = alphabets[crypting]
+			outText.append(newLetter)
+		elif eachLetter in special:
+			index = special.index(eachLetter)
+			crypting = (index) % 52
+			cryptText.append(crypting)
+			newLetter = special[crypting]
+			outText.append(newLetter)
+	return outText
+
+code = caesar_encrypt('hello HELLO @?', 3)
+print(code)

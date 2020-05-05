@@ -1,0 +1,21 @@
+from random import shuffle
+chars=["क","ख","ग","घ","ङ","च","छ","ज","झ","ण","त","थ","द","ध","न","प","फ","ब","भ","म","य","र","ल","व","स","श","ष","ह","ञ","ै","ौ","ृ","ु","ू","ि","ी","ो","ा","े"]
+keys=list(chars)
+shuffled_keys=list(chars)
+shuffle(shuffled_keys)
+maps=dict(zip(keys,shuffled_keys))
+reversed_maps=dict(zip(shuffled_keys,keys))
+def encrypt(message):
+    cipher=[]    
+    for letters in message:
+        if letters in chars:
+                cipher_letters=maps[letters]
+                cipher.append(cipher_letters)
+    return "".join(cipher)
+def decrypt(ciphers):
+    plaintext=[]
+    for letters in ciphers:
+       if letters in chars:
+                plaintext_letters=reversed_maps[letters]
+                plaintext.append(plaintext_letters)
+return "".join(plaintext)
